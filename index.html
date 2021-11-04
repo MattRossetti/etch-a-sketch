@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang=en>
+  <head>
+    <title>Etch-A-Sketch</title>
+    <meta charset="UTF-8">
+    <script src="js.js" defer></script>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel=stylesheet href="styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Lato&display=swap" rel="stylesheet"> 
+  </head>
+  <body>
+    <div class="header">
+      Have some fun, paint some things right in your browser!
+    </div>
+    <div>
+      <h1>Etch-A-Sketch</h1>
+    </div>
+    <div class="content">
+      <div class="options">
+        <div class="brush-type-selector">
+          <div class="brush-instructions">Select paint mode.</div>
+          <div class="brush-type-container">
+            <button class="mode-button" id='hover-button'>Hover</button>
+            <button class="mode-button clicked" id='click-button'>Click</button>
+          </div>
+        </div>
+        <div class="brush-Selector">
+          <div class="brush-instructions">Select paint brush style</div>
+          <div class="brush-button-container">
+            <div class="brush-button-top">
+              <button class="brush-button" id="color-button">Color</button>
+              <button class="brush-button" id="darken-button">Darken</button>
+            </div>
+            <div class="brush-button-bottom">
+              <button class="brush-button" id="rainbow-button">Rainbow</button>
+              <button class="brush-button" id="eraser-button">Eraser</button>
+            </div>
+          </div>
+        </div>
+        <div class="slider-container">
+          <p id="slider-instructions">The current grid is
+            <span class="square-count-display" id="x">16</span>
+            X
+            <span class="square-count-display" id="">16</span>
+            squares. <br>Use the slider below to adjust the grid size.
+          </p>
+          <div class="slider-and-range">
+            <div class=min-max-display>8</div>
+            <input autocomplete="off" type="range" min="8" max="64" value="16" class="slider">
+            <div class="min-max-display">64</div>
+          </div>
+        </div>
+        <div></div>
+        <button class="reset-button">Reset grid</button>
+      </div>
+      <div class="grid"></div>
+    </div>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div class="footer">
+      Made with 🌮 by&nbsp<a href="https://github.com/MattRossetti">Matt Rossetti</a>
+    </div>
+  </body>
+</html>
+
+

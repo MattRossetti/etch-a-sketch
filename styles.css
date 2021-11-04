@@ -1,0 +1,169 @@
+/*************** Color scheme *************** 
+#0A2E36 - gunmetal
+#4B88A2 - blue munsell
+#E5E1EE - lavender web
+#06D6A0 - caribbean Green
+#FFF9FB - Snow
+*/
+
+
+
+html, body {
+  margin: 0;
+  height: 100%;
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #4B88A2;
+  font-family: 'Lato', sans-serif;
+  user-select: none;
+}
+
+h3, h1 {
+  margin: 0px;
+}
+
+h1 {
+  color: #FFF9FB;
+  font-size: 64px;
+  text-shadow:
+  3px 3px 0 #0A2E36,
+-1px -1px 0 #0A2E36,  
+ 1px -1px 0 #0A2E36,
+ -1px 1px 0 #0A2E36,
+  1px 1px 0 #0A2E36;
+}
+
+.footer, .header {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #0A2E36;
+  width: 100%;
+  color: #FFF9FB;
+  height: 60px;
+}
+
+.content {
+  display: flex;
+}
+
+.options {
+  width: min(50vh, 48vw);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  color: #FFF9FB;
+}
+
+.grid {
+  height: min(50vh, 50vw);
+  width: min(50vh, 48vw);
+  display: grid;
+  gap: 1px;
+  background-color: #FFF9FB;
+  border-radius: 2px;
+  border: solid 4px #06D6A0;
+  /* pointer-events: none; */
+}
+
+.grid-square {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #E5E1EE;
+  border-radius: 2px;
+}
+
+.slider-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+
+.slider-and-range {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+#slider-instructions {
+  font-size: 16px;
+  text-align: center;
+}
+
+.square-count-display {
+  font-size: 18px;
+  font-weight: bold;
+}
+
+.brush-selector {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+}
+
+.brush-button-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  gap: 8px;
+}
+
+.brush-type-container {
+  display: flex;
+  gap: 8px;
+}
+
+.brush-instructions,
+.brush-type-instructions {
+  text-align: center;
+  margin: 8px;
+}
+
+button {
+  height: 30px;
+  width: 80px;
+  background-Color: #0A2E36;
+  border-radius: 5px;
+  border: solid 2px #FFF9FB;
+  color: #FFF9FB;
+  text-decoration: none;
+  transition: all .1s ease-in-out;
+  cursor: pointer;
+}
+
+.brush-button:hover {
+  transform: scale(1.1);
+}
+
+.darken-button:hover #rainbow-button{
+  background-color: red;
+  transform: scale(1.1);
+}
+
+.color-picker {
+  display: none;
+}
+
+.brush-button-top, .brush-button-bottom {
+  display: flex;
+  gap: 8px;
+}
+
+.clicked {
+  background-color:#06D6A0;
+}
+
+a {
+  text-decoration: none;
+  font-weight: bolder;
+  color: #FFF9FB;
+}
