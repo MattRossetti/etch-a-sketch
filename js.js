@@ -114,6 +114,9 @@ let updateText = (squares) => {
 let clearButtonClicks = (id) => {
   if (id != 'color-button') {
     colorButton.classList.remove('clicked');
+    colorButton.style.color = '#FFF9FB';
+    colorButton.style.backgroundColor = '#0A2E36';
+    colorButton.style.borderColor ='#FFF9FB'
   }
   if (id != 'darken-button') {
     darkenButton.classList.remove('clicked');
