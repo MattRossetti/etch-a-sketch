@@ -26,7 +26,7 @@ let setSquareColor = (e, rgbValues) => {
 
 let darkenSquare = (e) => {
   rgbValues = getRGBValues(e);
-  if (paintMode === 'hover' || (paintMode === 'click' && gridClick)) {
+  if (validClick()) {
     darkenRGBVals(e, rgbValues);
   }
 }
@@ -43,14 +43,21 @@ let calcRGBFromHex = (color) => {
   return rgbFromHex
 }
 
+let validClick = () => {
+  if ((paintMode === 'hover') || (paintMode === 'click' && (gridClick || paintClick))) {
+    return true;
+  }
+  else {return false}
+}
+
 let colorSquare = (e) => {
-    if (paintMode === 'hover' || (paintMode === 'click' && gridClick)) {
+    if (validClick()) {
       setSquareColor(e, userRGBVals)
     }
 }
 
 let eraseSquare = (e) => {
-  if (paintMode === 'hover' || (paintMode === 'click' && gridClick)) {
+  if (validClick()) {
     setSquareColor(e,[229,225,238])
   }
 }
@@ -64,26 +71,51 @@ let rainbowSquare = (e) => {
   g = getRandomInt(255);
   b = getRandomInt(255);
   let rgbValues = [r, g, b];
-  if (paintMode === 'hover' || (paintMode === 'click' && gridClick)) {
+  if (validClick()) {
     setSquareColor(e, rgbValues);
   }
 }
 
 let onSquareEnter = (e) => {
 
-  if (brushMode == 'color') {
+  if (brushMode === 'color') {
     colorSquare(e);
   }
-  else if (brushMode == 'darken') {
+  else if (brushMode === 'darken') {
     darkenSquare(e);
   }
-  else if (brushMode == 'rainbow') {
+  else if (brushMode === 'rainbow') {
     rainbowSquare(e);
   }
-  else if (brushMode == 'eraser') {
+  else if (brushMode === 'eraser') {
     eraseSquare(e);
   }
   
+}
+
+// let onSquareClick = (e) => {
+//   console.log('before')
+//   console.log(gridClick)
+//   rainbowSquare(e);
+//   console.log('after')
+
+// }
+
+let onSquareClick = (e) => {
+  paintClick = true;
+  if (brushMode === 'color') {
+    colorSquare(e);
+  }
+  else if (brushMode === 'darken') {
+    darkenSquare(e);
+  }
+  else if (brushMode === 'rainbow') {
+    rainbowSquare(e);
+  }
+  else if (brushMode === 'eraser') {
+    eraseSquare(e);
+  }
+  paintClick = false;
 }
 
 let clearGrid = () => {
@@ -97,6 +129,7 @@ let buildGrid = (totalSquares) =>{
     const square = document.createElement('div');
     square.classList.add('grid-square');
     square.addEventListener('mouseenter', onSquareEnter);
+    square.addEventListener('mousedown', onSquareClick);
     grid.appendChild(square);
   }
 }
@@ -205,6 +238,7 @@ let totalSquares = gridColumns * gridRows;
 let brushMode = '';
 let paintMode = 'click';
 const grid = document.querySelector('.grid');
+const options = document.querySelector('.options')
 const slider = document.querySelector('.slider');
 const squareDisplayX = document.querySelectorAll('.square-count-display');
 const brushButtons = document.querySelectorAll('.brush-button');
@@ -218,8 +252,11 @@ const clickButton = document.getElementById('click-button');
 const modeButtons = document.querySelectorAll('.mode-button');
 const body = document.querySelector('body');
 const colorPicker = document.createElement('input');
-colorPicker.type = 'color'
+colorPicker.type = 'color';
+colorPicker.classList.add('color-picker');
+options.appendChild(colorPicker)
 let gridClick = false;
+let paintClick = false;
 let color = '#000000';
 let userRGBVals = '';
 
@@ -238,6 +275,8 @@ brushButtons.forEach(e => createBrushListeners(e));
 resetButton.addEventListener('click', reloadGrid);
 
 slider.onchange = () => handleSlider(slider.value);
+
+darkenButton.click();
 
 colorButton.addEventListener('click', () => {
   if (colorButton.classList.contains('clicked')){

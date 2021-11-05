@@ -151,6 +151,7 @@ button {
 
 .color-picker {
   display: none;
+  margin: 80px
 }
 
 .brush-button-top, .brush-button-bottom {
